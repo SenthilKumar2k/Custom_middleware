@@ -1,3 +1,7 @@
+"""Django middleware function named set_request_data that modifies the incoming HTTP request before 
+passing it to the next middleware or view in the Django request-response cycle."""
+
+
 def set_request_data(get_response):
     print('set_request_data middleware')
     def wrapper(request):
@@ -16,3 +20,6 @@ def set_request_data(get_response):
 # start of set_request_data
 # index call {'data': '2'}
 # end of set_request_data
+
+# step 1
+
