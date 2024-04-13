@@ -21,5 +21,30 @@ def set_request_data(get_response):
 # index call {'data': '2'}
 # end of set_request_data
 
-# step 1
 
+# Middleware Function Structure:
+
+"""set_request_data is a middleware function that takes get_response as a parameter. 
+In Django, middleware functions are callable objects that can modify request or response 
+objects, typically by wrapping other views or middleware in a chain."""
+
+# Inner Wrapper Function (wrapper):
+
+"""Inside set_request_data, a nested function wrapper is defined. 
+This function will replace the default behavior of handling a request."""
+
+# Middleware Logic:
+
+"""The get_response function is called with the modified request object. This get_response function 
+represents the next middleware in the chain or the actual view that will process the request."""
+
+#Returning Response:(return response)
+
+"""The modified response (possibly altered by other middleware or the view) is returned back up the 
+middleware chain to the client."""
+
+#(return wrapper)
+
+"""Finally, the wrapper function is returned. This returned function will be used to handle the 
+incoming requests. When Django processes a request, it will pass the request through this middleware, 
+which can modify the request before passing it further along the chain."""

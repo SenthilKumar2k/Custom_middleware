@@ -52,6 +52,9 @@ MIDDLEWARE = [
     'midapp.middleware.set_request_data',
 ]
 
+"""Once registered, this middleware will be executed for every incoming HTTP request, 
+allowing you to modify the request or response as needed before it reaches the view."""
+
 ROOT_URLCONF = 'src.urls'
 
 TEMPLATES = [
