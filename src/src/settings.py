@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'midapp',
+    'advmidapp',
     'rest_framework'
 ]
 
@@ -49,7 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'midapp.middleware.set_request_data',
+    #'midapp.middleware.set_request_data',
+    'advmidapp.middleware.check_even',
 ]
 
 """Once registered, this middleware will be executed for every incoming HTTP request, 

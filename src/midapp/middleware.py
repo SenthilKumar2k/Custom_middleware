@@ -14,6 +14,8 @@ def set_request_data(get_response):
         return response
     return wrapper
 
+"""request data"""
+#form-data -> key=number, value=2 
 
 """output"""
 # post data=<QueryDict: {'number': ['2']}>

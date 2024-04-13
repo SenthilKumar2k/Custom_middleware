@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from midapp import views 
+from advmidapp import views as view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
+    path('check_even/',view.check_index),
     path('api-auth',include('rest_framework.urls'))
 ]
 
