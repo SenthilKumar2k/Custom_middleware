@@ -2,17 +2,17 @@
 passing it to the next middleware or view in the Django request-response cycle."""
 
 
-def set_request_data(get_response):
-    print('set_request_data middleware')
-    def wrapper(request):
-        print(f'post data={request.POST}')
-        data=request.POST.get('number')
-        request.POST={'data':data}
-        print('start of set_request_data')
-        response=get_response(request)
-        print('end of set_request_data')
-        return response
-    return wrapper
+# def set_request_data(get_response):
+#     print('set_request_data middleware')
+#     def wrapper(request):
+#         print(f'post data={request.POST}')
+#         data=request.POST.get('number')
+#         request.POST={'data':data}
+#         print('start of set_request_data')
+#         response=get_response(request)
+#         print('end of set_request_data')
+#         return response
+#     return wrapper
 
 """request data"""
 #form-data -> key=number, value=2 
@@ -50,3 +50,21 @@ middleware chain to the client."""
 """Finally, the wrapper function is returned. This returned function will be used to handle the 
 incoming requests. When Django processes a request, it will pass the request through this middleware, 
 which can modify the request before passing it further along the chain."""
+
+import json
+
+def set_request_data(get_response):
+    print('set_request_data_midleware')
+    def wrapper(request):
+        print(f"post data={request.body}")
+        try:
+            data=json.loads(request.body)
+            number=data.get('number')
+            request.custom_data={"data":number}
+            print("start of set_request_data")
+        except json.JSONDecodeError:
+            print("json data is in invalid format")
+        response=get_response(request)
+        print("end of set request data")
+        return response
+    return wrapper
